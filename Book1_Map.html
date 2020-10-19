@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    var ts = new Date().getTime();
+  </script>
+
+  <title>Map - A Recognition of Ignorance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Load the bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <!-- Load the project stylesheets -->
+  <link rel="stylesheet" type="text/css" href="../css/styles.css?" + ts media="all" />
+  <link rel="stylesheet" type="text/css" href="../css/book1.css?" + ts media="all" />
+  <link rel="stylesheet" type="text/css" href="../css/book1_map.css?" + ts media="all" />
+  <link rel="icon" href="./Images/favicon.ico">
+</head>
+<body>
+  <!-- Fall back to local version of bootstrap CSS if CDN unavailable -->
+  <div id="CssTest_bootstrap" class="hidden"></div>
+  <script>
+      $(function () {
+          if ($('#CssTest_bootstrap').is(':visible')) {
+              $("head").prepend('<link rel="stylesheet" type="text/css" href="../css/bootstrap/4.5.2/bootstrap.min.css">');
+          }
+      });
+  </script>
+
+  <!-- Add Google Analytics to calculator so we can track usage information -->
+
+  <div id="headerSectionBanner"></div>
+  <div id="headerSection"></div>
+  <div id="headerSectionBook"></div>
+  <br />
+  <div class="container-fluid">
+    <h2>Map of Ennekos</h2>
+    <!-- Show city/character click on larger screens -->
+    <!-- Show city/character drop-downs on smaller screens -->
+    <div class="d-lg-none">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+          <label for="city_select"><b>View City Details:</b></label>
+          <select id="city_select" onchange="selectAndShowCityContent(this.value)">
+            <option disabled selected value> -- choose a city -- </option>
+            <option value="Agier">Agier</option>
+            <option value="Cariana">Cariana</option>
+            <option value="Elano">Elano</option>
+            <option value="Larais">Larais</option>
+            <option value="Lycendara">Lycendara</option>
+            <option value="Maripessa">Maripessa</option>
+          </select>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+          <label for="character_select"><b>View Character Path:</b></label>
+          <select id="character_select" onchange="selectAndShowCharacterContent(this.value)">
+            <option disabled selected value> -- choose a character -- </option>
+            <option value="Linos">Linos</option>
+            <option value="Emaye">Emaye</option>
+            <option value="Kyrra">Kyrra</option>
+            <option value="Emun">Emun</option>
+            <option value="Issa">Issa</option>
+            <option value="Nikanthor">Nikanthor</option>
+            <option value="Mynes">Mynes</option>
+            <option value="Atrus">Atrus</option>
+            <option value="Keron">Keron</option>
+            <option value="Maera">Maera</option>
+            <option value="Valor">Valor</option>
+            <option value="Alastor">Alastor</option>
+            <option value="Derius">Derius</option>
+            <option value="Kadara">Kadara</option>
+            <option value="Luthor">Luthor</option>
+            <option value="Zarya">Zarya</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row map_row">
+      <div class="col-lg-10 col-xl-10">
+        <figure class="map">
+          <svg viewBox="0 0 1000 825" preserveAspectRatio="xMinYMin meet">
+            <image href="./Images/Book1/Ennekos.svg" width="100%" />
+            <!-- character path lines -->
+            <g class="character_path">
+              <!-- Specify the path before the icon/name -->
+              <!-- This makes sure the path is always behind the characters -->
+              <path id="path_Linos" class="agier animate line" display="none" />
+              <path id="path_Emaye" class="cariana" display="none" />
+              <path id="path_Kyrra" class="cariana" display="none" />
+              <path id="path_Emun" class="elano animate line" display="none" />
+              <path id="path_Issa" class="elano animate line" display="none" />
+              <path id="path_Nikanthor" class="elano animate line" display="none" />
+              <path id="path_Mynes" class="larais animate line" display="none" />
+              <path id="path_Atrus" class="lycendara animate line" display="none" />
+              <path id="path_Keron" class="lycendara animate line" display="none" />
+              <path id="path_Maera" class="lycendara animate line" display="none" />
+              <path id="path_Valor" class="lycendara animate line" display="none" />
+              <path id="path_Alastor" class="maripessa animate line" display="none" />
+              <path id="path_Derius" class="maripessa" display="none" />
+              <path id="path_Kadara" class="maripessa animate line" display="none" />
+              <path id="path_Luthor" class="maripessa" display="none" />
+              <path id="path_Zarya" class="maripessa" display="none" />
+
+              <!-- Character icons and initials -->
+              <circle id="image_Linos" class="agier animate move" r="10" display="none"></circle>
+              <text id="name_Linos" class="agier animate move" display="none">L</text>
+
+              <circle id="image_Emaye" class="cariana animate grow" r="10" display="none"></circle>
+              <text id="name_Emaye" class="cariana" display="none">E</text>
+
+              <circle id="image_Kyrra" class="cariana animate grow" r="10" display="none"></circle>
+              <text id="name_Kyrra" class="cariana" display="none">K</text>
+
+              <circle id="image_Emun" class="elano animate move" r="10" display="none"></circle>
+              <text id="name_Emun" class="elano animate move" display="none">E</text>
+
+              <circle id="image_Issa" class="elano animate move" r="10" display="none"></circle>
+              <text id="name_Issa" class="elano animate move" display="none">I</text>
+
+              <circle id="image_Nikanthor" class="elano animate move" r="10" display="none"></circle>
+              <text id="name_Nikanthor" class="elano animate move" display="none">N</text>
+
+              <circle id="image_Mynes" class="larais animate move" r="10" display="none"></circle>
+              <text id="name_Mynes" class="larais animate move" display="none">M</text>
+
+              <circle id="image_Atrus" class="lycendara animate move" r="10" display="none"></circle>
+              <text id="name_Atrus" class="lycendara animate move" display="none">A</text>
+
+              <circle id="image_Keron" class="lycendara animate move" r="10" display="none"></circle>
+              <text id="name_Keron" class="lycendara animate move" display="none">K</text>
+
+              <circle id="image_Maera" class="lycendara animate move" r="10" display="none"></circle>
+              <text id="name_Maera" class="lycendara animate move" display="none">M</text>
+
+              <circle id="image_Valor" class="lycendara animate move" r="10" display="none"></circle>
+              <text id="name_Valor" class="lycendara animate move" display="none">V</text>
+
+              <circle id="image_Alastor" class="maripessa animate move" r="10" display="none"></circle>
+              <text id="name_Alastor" class="maripessa animate move" display="none">A</text>
+
+              <circle id="image_Derius" class="maripessa animate grow" r="10" display="none"></circle>
+              <text id="name_Derius" class="maripessa" display="none">D</text>
+
+              <circle id="image_Kadara" class="maripessa animate move" r="10" display="none"></circle>
+              <text id="name_Kadara" class="maripessa animate move" display="none">K</text>
+
+              <circle id="image_Luthor" class="maripessa animate grow" r="10" display="none"></circle>
+              <text id="name_Luthor" class="maripessa" display="none">L</text>
+
+              <circle id="image_Zarya" class="maripessa animate grow" r="10" display="none"></circle>
+              <text id="name_Zarya" class="maripessa" display="none">Z</text>
+            </g>
+            <!-- Hover Capabilities for Cities -->
+            <!-- Do after character paths so that the cities can be selected over the lines -->
+            <!-- Remove hover capabilities if the city drop-down should be used instead -->
+            <g class="hover_city d-none d-lg-block">
+              <a class="agier" onclick="showCityContent('Agier')">
+                <circle cx="315" cy="225" r="25" />
+              </a>
+              <a class="cariana" onclick="showCityContent('Cariana')">
+                <circle cx="485" cy="590" r="25" />
+              </a>
+              <a class="elano" onclick="showCityContent('Elano')">
+                <circle cx="505" cy="225" r="25" />
+              </a>
+              <a class="larais" onclick="showCityContent('Larais')">
+                <circle cx="565" cy="490" r="25" />
+              </a>
+              <a class="lycendara" onclick="showCityContent('Lycendara')">
+                <circle cx="295" cy="560" r="25" />
+              </a>
+              <a class="maripessa" onclick="showCityContent('Maripessa')">
+                <circle cx="305" cy="405" r="25" />
+              </a>
+            </g>
+          </svg>
+        </figure>
+      </div>
+      <!-- Only show character path checkboxes on larger screens -->
+      <div class="row d-none d-lg-block">
+        <div id="characters" class="col-lg-2 col-xl-2">
+          <p><b>Character Paths:</b></p>
+          <div>
+            <b>Agier</b>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Linos" class="custom-control-input agier check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Linos" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Linos
+              </label>
+            </div>
+          </div>
+          <br />
+          <div>
+            <b>Cariana</b>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Emaye" class="custom-control-input cariana check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Emaye" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Emaye
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Kyrra" class="custom-control-input cariana check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Kyrra" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Kyrra
+              </label>
+            </div>
+          </div>
+          <br />
+          <div>
+            <b>Elano</b>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Emun" class="custom-control-input elano check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Emun" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Emun
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Issa" class="custom-control-input elano check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Issa" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Issa
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Nikanthor" class="custom-control-input elano check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Nikanthor" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Nikanthor
+              </label>
+            </div>
+          </div>
+          <br />
+          <div>
+            <b>Larais</b>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Mynes" class="custom-control-input larais check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Mynes" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Mynes
+              </label>
+            </div>
+          </div>
+          <br />
+          <div>
+            <b>Lycendara</b>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Atrus" class="custom-control-input lycendara check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Atrus" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Atrus
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Keron" class="custom-control-input lycendara check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Keron" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Keron
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Maera" class="custom-control-input lycendara check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Maera" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Maera
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Valor" class="custom-control-input lycendara check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Valor" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Valor
+              </label>
+            </div>
+          </div>
+          <br />
+          <div>
+            <b>Maripessa</b>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Alastor" class="custom-control-input maripessa check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Alastor" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Alastor
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Derius" class="custom-control-input maripessa check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Derius" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Derius
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Kadara" class="custom-control-input maripessa check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Kadara" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Kadara
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Luthor" class="custom-control-input maripessa check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Luthor" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Luthor
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input id="checkbox_Zarya" class="custom-control-input maripessa check" type="checkbox" onclick="toggle_character_path(this.id);">
+              <label for="checkbox_Zarya" class="custom-control-label character_description" data-toggle='popover' data-trigger='hover' data-placement='top' data-html="true">
+                Zarya
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!-- Modal -->
+    <div class="modal fade" role="dialog">
+      <div class="modal-dialog mw-100 w-75">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title w-100">Modal Header</h2>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load jQuery and fall back to local version if unavailable -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../js/jquery/3.5.1/jquery.min.js">\x3C/script>')</script>
+
+  <!-- Load popper and fall back to local version if unavailable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script>window.popper || document.write('<script src="../js/popper/1.16.0/popper.min.js">\x3C/script>')</script>
+
+  <!-- Load bootstrap and fall back to local version if unavailable -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script>window.bootstrap || document.write('<script src="../js/bootstrap/4.5.2/bootstrap.min.js">\x3C/script>')</script>
+
+  <!-- Load the project javascript -->
+  <script src="../js/ennekos.js?" + ts></script>
+
+  <script>
+    // Load the header banner
+    $("#headerSectionBanner").load("banner_book1.html");
+    // Load the header, highlighting the active tab
+    $("#headerSection").load("navbar.html", function() {
+      jQuery('#myTopnav_Book1').addClass('active');
+      jQuery('#myTopnav_Book1_Map').addClass('active');
+    });
+    // Load the book header, highlighting the active tab
+    $("#headerSectionBook").load("navbar_book1.html", function() {
+      jQuery('#myBooknav_Book1_Map').addClass('active');
+    });
+
+    /* Character Info */
+    /*----------------*/
+
+    // Initialize the popovers
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+
+    // Set the text of the popovers based on character file contents
+    $(".character_description").each(function() {
+      var character = $(this).prop('for').split("_")[1];
+      var character_file = "../files/characters/" + character + ".html";
+      $(this).attr('title', character);
+      $(this).attr('data-content', readTextFile(character_file));
+    });
+
+    /* Character Paths */
+    /*-----------------*/
+
+    // Show/hide the character paths when a character's name is selected
+    function toggle_character_path(checkbox_id) {
+      var character = checkbox_id.split("_")[1];
+      if (document.getElementById('checkbox_' + character).checked) {
+        showCharacterPath(character);
+      } else {
+        hideCharacterPath(character);
+      }
+    }
+
+    // When the user selects a character from the dropdown display their path
+    function selectAndShowCharacterContent(character) {
+      showCharacterPath(character);
+    }
+
+    function showCharacterPath(character) {
+      /* Path animation */
+      document.getElementById('path_' + character).style.display = "block";
+      /* Set the dasharray and dashoffset values based on the line length */
+      var char_path_length = document.getElementById('path_' + character).getTotalLength();
+      document.getElementById('path_' + character).style.strokeDasharray = char_path_length;
+      document.getElementById('path_' + character).style.strokeDashoffset = char_path_length;
+      document.getElementById("path_" + character).style.animationPlayState = "running";
+      /* Icon animation */
+      document.getElementById('image_' + character).style.display = "block";
+      document.getElementById('image_' + character).style.animationPlayState = "running";
+      /* Name animation */
+      document.getElementById('name_' + character).style.display = "block";
+      document.getElementById('name_' + character).style.animationPlayState = "running";
+    }
+
+    function hideCharacterPath(character) {
+      document.getElementById('path_' + character).style.display = "none";
+      document.getElementById('image_' + character).style.display = "none";
+      document.getElementById('name_' + character).style.display = "none";
+    }
+
+    /* City Info */
+    /*-----------*/
+
+    // Add hover color for each city
+    $(".hover_city a").each(function() {
+      $(this).hover(
+        function() {
+          $(this).addClass("active");
+        }, function() {
+          $(this).removeClass("active");
+        }
+      );
+    });
+
+    // When the user selects the city from the dropdown, open the modal
+    function selectAndShowCityContent(city) {
+      showCityContent(city);
+    }
+
+    // When the user clicks the button, open the modal 
+    function showCityContent(city) {
+      // Set the name of the file with the city info
+      // Modify the file name to prevent caching
+      var city_file = "../files/cities/" + city + ".html" + '?_=' + new Date().getTime();
+      // Prevent the modal from opening at the bottom of the page
+      event.preventDefault()
+      // Show the modal, setting the proper background color, title text, and body content
+      $('.modal').modal('show');
+      $(".modal-title").text(city);
+      $(".modal-header").addClass(city.toLowerCase());
+      $(".modal-body").load(city_file);
+    }
+
+    // Remove the city-specific coloring
+    $(".modal").on('hide.bs.modal', function (e) {
+      var city = $(".modal-title").text().toLowerCase();
+      $(".modal-header").removeClass(city);
+    });
+  </script>
+</body>
+</html>
+

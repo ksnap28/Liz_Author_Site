@@ -1,0 +1,70 @@
+/* Fonts */
+/*-------*/
+
+@font-face {
+   font-family: 'FontEnnekos';
+   src: url('../fonts/ambrosia/Ambrosia.ttf') format('truetype');
+}
+
+/* Navigation Bar */
+/*----------------*/
+
+/* Style the book navigation bar */
+.topnav#myBooknav {
+    background-color: #709fb0;
+}
+
+/* Add an active class to highlight the current book page */
+.topnav#myBooknav a.active {
+    background-color: #726a95;
+}
+
+/* Add a border between the top nav and the book nav */
+#myBooknav {
+    border-style: solid;
+    border-width: 2px 0 0 0;
+}
+
+/*--------*/
+/* Banner */
+/*--------*/
+
+.banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner .container {
+    position: relative;
+    z-index: 2;
+}
+
+.banner img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+}
+
+/* Style the remainder of the content */
+/*------------------------------------*/
+
+h1 {
+    font-family: 'FontEnnekos';
+    font-weight: lighter;
+}
+
+h2,h3 {
+    font-family: 'FontEnnekos';
+}
+
+thead {
+	background-color: #726a95;
+}
+
+img {
+    width: 100%;
+}

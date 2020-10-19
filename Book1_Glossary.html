@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    var ts = new Date().getTime();
+  </script>
+
+  <title>Glossary - A Recognition of Ignorance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Load the bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <!-- Load the project stylesheets -->
+  <link rel="stylesheet" type="text/css" href="../css/styles.css?" + ts media="all" />
+  <link rel="stylesheet" type="text/css" href="../css/book1.css?" + ts media="all" />
+  <link rel="icon" href="./Images/favicon.ico">
+</head>
+<body>
+  <!-- Fall back to local version of bootstrap CSS if CDN unavailable -->
+  <div id="CssTest_bootstrap" class="hidden"></div>
+  <script>
+      $(function () {
+          if ($('#CssTest_bootstrap').is(':visible')) {
+              $("head").prepend('<link rel="stylesheet" type="text/css" href="../css/bootstrap/4.5.2/bootstrap.min.css">');
+          }
+      });
+  </script>
+
+  <!-- Add Google Analytics to calculator so we can track usage information -->
+
+  <div id="headerSectionBanner"></div>
+  <div id="headerSection"></div>
+  <div id="headerSectionBook"></div>
+  <br />
+  <div class="container">
+    <h2>Glossary</h2>
+    <br />
+    <input class="form-control" id="tableSearch" type="text" placeholder="Search Table...">
+    <br />
+    <div class="table-responsive">
+      <table class="table">
+        <caption>Glossary</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="w-25">Word</th>
+            <th scope="col" class="w-75">Meaning</th>
+          </tr>
+        </thead>
+        <tbody id="Glossary_table">
+          <tr>
+            <td>Agapia(e)</td>
+            <td>beloved(s). The formal mistress of a wealthy man</td>
+          </tr>
+          <tr>
+            <td>Agora</td>
+            <td>the central square in most cities. Usually includes the market, as well as government buildings and temples</td>
+          </tr>
+          <tr>
+            <td>Anazit</td>
+            <td>A Lycendan boy’s mission to prove himself worthy of joining the meirat</td>
+          </tr>
+          <tr>
+            <td>Axoie (pl. axoiae)</td>
+            <td>an unworthy person. A Lycendan slur.</td>
+          </tr>
+          <tr>
+            <td>Apasya’s Gift</td>
+            <td>a drug that causes vivid dreams</td>
+          </tr>
+          <tr>
+            <td>Benicolum</td>
+            <td>Myoan word. Term of endearment for a child, especially a son.</td>
+          </tr>
+          <tr>
+            <td>Cassato</td>
+            <td>a dinner party for Gravan and Ythomin men. Often used as an excuse to hire hetaerae</td>
+          </tr>
+          <tr>
+            <td>Dimotorae</td>
+            <td>a political party in Grava at the end of the Time of Tyrants. Has recently been reformed</td>
+          </tr>
+          <tr>
+            <td>Drachma(e)</td>
+            <td>silver coin(s) used throughout Ennekos. Worth ten copper obols</td>
+          </tr>
+          <tr>
+            <td>Ekando</td>
+            <td>the primary unit of Lycendan society. Literally translates to one hundred men</td>
+          </tr>
+          <tr>
+            <td>Ekantha</td>
+            <td>a Lycendan officer. The leader of an ekando.</td>
+          </tr>
+          <tr>
+            <td>Erintha</td>
+            <td>the Lycendan Minister of Peace (defense)</td>
+          </tr>
+          <tr>
+            <td>Famoia(e)</td>
+            <td>a person (people) who speaks with the dead</td>
+          </tr>
+          <tr>
+            <td>Famonychte</td>
+            <td>an Olenosi festival. Translates to Night of Souls.</td>
+          </tr>
+          <tr>
+            <td>Fiya(e)</td>
+            <td>gold coin(s) used throughout Ennekos. Worth ten silver drachmae</td>
+          </tr>
+          <tr>
+            <td>Hetaera(e)</td>
+            <td>courtesan(s)</td>
+          </tr>
+          <tr>
+            <td>Impluvium</td>
+            <td>a sunken basin in the atrium of most Ennekian houses. This catches rainwater that falls through the compluvium and empties it into an underground cistern</td>
+          </tr>
+          <tr>
+            <td>Kyria</td>
+            <td>a member of the Lycendan Women’s Council</td>
+          </tr>
+          <tr>
+            <td>Kyrios (pl. kyriotae)</td>
+            <td>a member of the ruling council of Grava or Ythome</td>
+          </tr>
+          <tr>
+            <td>Kyriatha</td>
+            <td>the president of the Lycendan Women’s Council</td>
+          </tr>
+          <tr>
+            <td>Kyriotha</td>
+            <td>the president of the Ythomin Syndera council</td>
+          </tr>
+          <tr>
+            <td>Liver-eater</td>
+            <td>greedy person</td>
+          </tr>
+          <tr>
+            <td>Machioraios</td>
+            <td>a sword fighting competition held in many Ennekian countries</td>
+          </tr>
+          <tr>
+            <td>Maza</td>
+            <td>barley dumplings. </td>
+          </tr>
+          <tr>
+            <td>Meanomis</td>
+            <td>a Lycendan festival. Translates to Day of Names.</td>
+          </tr>
+          <tr>
+            <td>Meirat</td>
+            <td>military training for boys in Lycenda</td>
+          </tr>
+          <tr>
+            <td>Mirza</td>
+            <td>Myoan word. Honorific for a prince.</td>
+          </tr>
+          <tr>
+            <td>Obol</td>
+            <td>a copper coin used throughout Ennekos. The lowest denomination.</td>
+          </tr>
+          <tr>
+            <td>Olantha</td>
+            <td>The military dictator of Lycenda. Literally Minister of All. </td>
+          </tr>
+          <tr>
+            <td>Paides</td>
+            <td>primary school for both girls and boys in Lycenda</td>
+          </tr>
+          <tr>
+            <td>Paiza</td>
+            <td>a springtime festival in Ythome</td>
+          </tr>
+          <tr>
+            <td>Pater</td>
+            <td>the legal guardian of any Ennekian woman. Usually a father or brother, but can be any man</td>
+          </tr>
+          <tr>
+            <td>Retsina</td>
+            <td>a wine laced with pine resin</td>
+          </tr>
+          <tr>
+            <td>Sevilem</td>
+            <td>Myoan word. Term of endearment, translates roughly to ‘beloved’</td>
+          </tr>
+          <tr>
+            <td>Sibyl</td>
+            <td>a mythical priestess of Thao able to predict the future</td>
+          </tr>
+          <tr>
+            <td>Stratitha</td>
+            <td>Lycendan Minister of Strategy (war)</td>
+          </tr>
+          <tr>
+            <td>Syndera</td>
+            <td>the ruling council of Ythome</td>
+          </tr>
+          <tr>
+            <td>Thaveo/a</td>
+            <td>Honorific for a priest/priestess of Thao</td>
+          </tr>
+          <tr>
+            <td>Thaveotha</td>
+            <td>the head priest of Thao’s religion</td>
+          </tr>
+          <tr>
+            <td>Tsipouro</td>
+            <td>a strong liquor distilled from grape pomace</td>
+          </tr>
+          <tr>
+            <td>Vohlo</td>
+            <td>Myoan word. Vulgar insult</td>
+          </tr>
+          <tr>
+            <td>Voulis</td>
+            <td>the ruling council of Grava</td>
+          </tr>
+          <tr>
+            <td>Vivliotas</td>
+            <td>the great library in Larais</td>
+          </tr>
+          <tr>
+            <td>Wild Carrot Seed</td>
+            <td>a contraceptive</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <br />
+  </div>
+
+  <!-- Load jQuery and fall back to local version if unavailable -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="../js/jquery/3.5.1/jquery.min.js">\x3C/script>')</script>
+
+  <!-- Load bootstrap and fall back to local version if unavailable -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script>window.$.fn.emulateTransitionEnd || document.write('<script src="../js/bootstrap/4.5.2/bootstrap.min.js">\x3C/script>')</script>
+
+  <!-- Load the project javascript -->
+  <script src="../js/ennekos.js?" + ts></script>
+
+  <script>
+    // Load the header banner
+    $("#headerSectionBanner").load("banner_book1.html");
+    // Load the header, highlighting the active tab
+    $("#headerSection").load("navbar.html", function() {
+      jQuery('#myTopnav_Book1').addClass('active');
+      jQuery('#myTopnav_Book1_Glossary').addClass('active');
+    });
+    // Load the book header, highlighting the active tab
+    $("#headerSectionBook").load("navbar_book1.html", function() {
+      jQuery('#myBooknav_Book1_Glossary').addClass('active');
+    });
+
+    // Allow the table body to be searched/filtered
+    $("#tableSearch").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#Glossary_table tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  </script>
+</body>
+</html>

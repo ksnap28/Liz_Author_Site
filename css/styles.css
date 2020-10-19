@@ -1,0 +1,75 @@
+/* Fonts */
+/*-------*/
+
+@font-face {
+   font-family: 'FontHomeBanner';
+   src: url('../fonts/the-suavity/The Suavity.ttf') format('truetype');
+}
+
+/* Navigation Bar */
+/*----------------*/
+
+/* Style the navigation bar */
+.topnav {
+    background-color: #726a95;
+    font-family: georgia, garamond, serif;
+    font-style: italic;
+}
+
+/* Style the navbar text */
+.topnav a {
+    color: white;
+    padding: 14px 16px;
+    font-size: 16px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #8DB2C0;
+    border-radius: 12px;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+    background-color: #709fb0;
+    color: black;
+    font-size: 18px;
+    border-radius: 12px;
+}
+
+/* Change the color of the lines in the drop-down button hamburger (small screens) */
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(141,178,192, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* Change the color of the border in the drop-down button hamburger (small screens) */
+.custom-toggler.navbar-toggler {
+  border-color: #8DB2C0;
+} 
+
+/* Style the remainder of the content */
+/*------------------------------------*/
+
+body {
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: black;
+}
+
+h1 {
+    font-family: 'FontHomeBanner';
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    padding-top: 25px;
+}
+
+h2 {
+    font-family: georgia, garamond, serif;
+    font-style: italic;
+}
+
+.navbar-brand {
+    font-family: 'FontHomeBanner';
+}
