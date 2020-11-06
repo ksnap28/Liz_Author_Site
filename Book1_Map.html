@@ -364,8 +364,11 @@
 
     // Initialize the popovers
     $(function () {
-      $('[data-toggle="popover"]').popover()
-    })
+      $('[data-toggle="popover"]').popover({
+        delay: {show: "750",
+                hide: "0"}
+      });
+    });
 
     // Set the text of the popovers based on character file contents
     $(".character_description").each(function() {
